@@ -55,9 +55,6 @@ class Player(pygame.sprite.Sprite):
 
         screen.blit(self.image, self.pos, self.rect)
 
-    def erase_me(self):
-        self.image.fill((0, 0, 0, 0))
-
 
 class Labobject(pygame.sprite.Sprite):
     """Class for labyrinth objects."""

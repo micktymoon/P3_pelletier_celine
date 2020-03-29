@@ -74,53 +74,55 @@ guardian = draw_people(labyrinth, "G", Guardian)
 ether = Labobject('ether.png', list_none)
 needle = Labobject('aiguille.png', list_none)
 
+def main():
+    while 1:
 
-while 1:
-
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            sys.exit()
-        draw_labyrinth(labyrinth, list_walls, list_none)
-        guardian.draw_me()
-        old_posx = player.pos.x
-        old_posy = player.pos.y
-        if event.type == pygame.KEYDOWN:
-
-            if event.key == pygame.K_UP:
-                player.move_up()
-
-            if event.key == pygame.K_DOWN:
-                player.move_down()
-
-            if event.key == pygame.K_RIGHT:
-                player.move_right()
-
-            if event.key == pygame.K_LEFT:
-                player.move_left()
-
-        if player.pos.colliderect(ether.draw_me()):
-            player.obj1 = True
-            ether.erase_me()
-
-        if player.pos.colliderect(needle.draw_me()):
-            player.obj2 = True
-            needle.erase_me()
-
-        if player.pos.collidelist(list_walls) != -1:
-            player.pos.x = old_posx
-            player.pos.y = old_posy
-
-        if player.pos.colliderect(guardian.draw_me()):
-            if player.obj1 is True and player.obj2 is True:
-                print("YOU WIN")
-                guardian.erase_me()
-                player.pos.y = guardian.pos.y + 20
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
                 sys.exit()
-            else:
-                print("YOU LOOSE")
-                sys.exit()
-        player.draw_me()
+            draw_labyrinth(labyrinth, list_walls, list_none)
+            guardian.draw_me()
+            old_posx = player.pos.x
+            old_posy = player.pos.y
+            if event.type == pygame.KEYDOWN:
 
-    pygame.display.update()
-    pygame.display.flip()
+                if event.key == pygame.K_UP:
+                    player.move_up()
 
+                if event.key == pygame.K_DOWN:
+                    player.move_down()
+
+                if event.key == pygame.K_RIGHT:
+                    player.move_right()
+
+                if event.key == pygame.K_LEFT:
+                    player.move_left()
+
+            if player.pos.colliderect(ether.draw_me()):
+                player.obj1 = True
+                ether.erase_me()
+
+            if player.pos.colliderect(needle.draw_me()):
+                player.obj2 = True
+                needle.erase_me()
+
+            if player.pos.collidelist(list_walls) != -1:
+                player.pos.x = old_posx
+                player.pos.y = old_posy
+
+            if player.pos.colliderect(guardian.draw_me()):
+                if player.obj1 is True and player.obj2 is True:
+                    print("YOU WIN")
+                    guardian.erase_me()
+                    player.pos.y = guardian.pos.y + 20
+                    return "CONGRATULATION"
+                else:
+                    print("YOU LOOSE")
+                    return "GAME OVER"
+            player.draw_me()
+
+        pygame.display.update()
+        pygame.display.flip()
+
+if __name__ == "__main__":
+    main()
