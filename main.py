@@ -6,59 +6,18 @@ from classes import*
 
 pygame.init()
 
-
 # Screen creation:
 screen = pygame.display.set_mode((300, 300))
 # Picture of the walls:
 wall = pygame.image.load('floor-tiles-20x20.png').convert()
-
-
-# x = 15
-# y = 15
-# labyrinth = [['']*y for _ in range(x)]
-# print(labyrinth)
-# labyrinth = [
-#     ['m', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm'],
-#     ['m', '', '', '', '', '', '', '', '', '', '', '', '', '', 'm'],
-#     ['D', 'P', '', '', '', '', '', '', '', '', '', '', '', '', 'm'],
-#     ['m', '', '', '', '', '', '', '', '', '', '', '', '', '', 'm'],
-#     ['m', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', '', '', '', '', '', 'm'],
-#     ['m', '', '', '', '', '', '', '', '', '', '', '', '', '', 'm'],
-#     ['m', '', '', '', '', '', '', '', '', '', '', '', '', '', 'm'],
-#     ['m', '', '', '', '', '', '', '', '', '', '', '', '', '', 'm'],
-#     ['m', '', '', '', '', '', '', '', '', '', '', '', '', '', 'm'],
-#     ['m', '', '', '', '', '', '', '', '', '', '', '', '', '', 'm'],
-#     ['m', '', '', '', '', '', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm'],
-#     ['m', '', '', '', '', '', '', '', '', '', '', '', '', '', 'm'],
-#     ['m', '', '', '', '', '', '', '', '', '', '', '', '', 'G', 'A'],
-#     ['m', '', '', '', '', '', '', '', '', '', '', '', '', '', 'm'],
-#     ['m', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm']]
-
-
-# def draw_labyrinth(lab, l_wall, l_none):
-#     x = 0
-#     for row in lab:
-#         y = 0
-#         for column in row:
-#             if column == 'm':
-#                 screen.blit(wall, (x*20, y*20), (100, 0, 20, 20))
-#                 l_wall.append(screen.blit(wall, (x*20, y*20), (100, 0, 20, 20)))
-#             if column == '':
-#                 screen.blit(wall, (x*20, y*20), (380, 0, 20, 20))
-#                 l_none.append(screen.blit(wall, (x*20, y*20), (380, 0, 20, 20)))
-#             if column == 'D':
-#                 screen.blit(wall, (x*20, y*20), (160, 20, 20, 20))
-#             if column == 'A':
-#                 screen.blit(wall, (x*20, y*20), (160, 20, 20, 20))
-#             y += 1
-#         x += 1
+# generate and diplay the labyrinth:
 labyrinth = Lab('labyrinth')
 labyrinth.generate_lab()
 labyrinth.display_lab()
-print(labyrinth.l_wall)
-print(labyrinth.l_none)
 
-def draw_people(lab, lettre, classe):
+
+def draw_character(lab, lettre, classe):
+    """draw a character on the labyrinth"""
     x = 0
     for row in lab:
         y = 0
@@ -70,8 +29,9 @@ def draw_people(lab, lettre, classe):
         x += 1
 
 
-player = draw_people(labyrinth.config, "P", Player)
-guardian = draw_people(labyrinth.config, "G", Guardian)
+# draw the characters and the objects on the labyrinth:
+player = draw_character(labyrinth.config, "P", Player)
+guardian = draw_character(labyrinth.config, "G", Guardian)
 ether = Labobject('ether.png', labyrinth.l_none)
 needle = Labobject('aiguille.png', labyrinth.l_none)
 
