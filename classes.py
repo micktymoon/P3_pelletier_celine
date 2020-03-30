@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+# -*-coding: utf8 -*-
+
 import sys
 import pygame
 import random
@@ -8,9 +11,11 @@ screen = pygame.display.set_mode((300, 300))
 
 
 class Lab(list):
+
     """Labyrinth Class."""
 
     def __init__(self, fichier):
+        """Constructor of this class"""
         self.fichier = fichier
         self.lab = []
         self.l_wall = []
@@ -32,7 +37,7 @@ class Lab(list):
             self.config = config
 
     def display_lab(self):
-        """diplay the labyrinth"""
+        """diplay the labyrinth, add rectangles of walls to l_wall and blacks rectangles to the l_none"""
 
         x = 0
         for row in self.config:
@@ -56,6 +61,7 @@ class Player(pygame.sprite.Sprite):
     """Player Class."""
 
     def __init__(self, departure):
+        """Constructor of this class"""
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('MacGyver.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
@@ -106,6 +112,7 @@ class Labobject(pygame.sprite.Sprite):
     """Class for labyrinth objects."""
 
     def __init__(self, image, list):
+        """Constructor of this class"""
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(image).convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
@@ -113,7 +120,7 @@ class Labobject(pygame.sprite.Sprite):
         self.pos = random.choice(list)
 
     def draw_me(self):
-        """draw object on the screen."""
+        """draw object on the screen and return the rectangle of the object."""
 
         return screen.blit(self.image, self.pos)
 
@@ -127,6 +134,7 @@ class Guardian(pygame.sprite.Sprite):
     """Class for the labyrinth guardian."""
 
     def __init__(self, arrival):
+        """Constructor of this class"""
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('Gardien.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
@@ -134,7 +142,7 @@ class Guardian(pygame.sprite.Sprite):
         self.pos = self.rect.move(arrival)
 
     def draw_me(self):
-        """draw guardian on the screen."""
+        """draw guardian on the screen and return the rectangle of the guardian."""
 
         return screen.blit(self.image, self.pos)
 
