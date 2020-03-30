@@ -1,5 +1,5 @@
 # oc_projet3
-projet 3 pour la formation OpenClassRooms
+project 3 for OpenClassRooms's formation
 
 HELP MACGIVER TO RUN AWAY 
 
@@ -26,7 +26,7 @@ INSTALLING:
 
     - Start the program with the command :
         ~$ python3 main.py
-
+ 
 
 MADE WITH:
 
