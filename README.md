@@ -7,6 +7,7 @@ This is a labyrinth game. Where you need to collect the two object in the labyri
 
 
 GETTING STARTED:
+
 PREREQUISITES:
 
 You need to have :
