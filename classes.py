@@ -11,7 +11,7 @@ class Player(pygame.sprite.Sprite):
 
     def __init__(self, departure):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load('MacGyver.png').convert()
+        self.image = pygame.image.load('MacGyver.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()
         self.speed_right = [20, 0]
@@ -53,7 +53,7 @@ class Player(pygame.sprite.Sprite):
     def draw_me(self):
         """draw player."""
 
-        screen.blit(self.image, self.pos, self.rect)
+        screen.blit(self.image, self.pos)
 
 
 class Labobject(pygame.sprite.Sprite):
@@ -61,14 +61,14 @@ class Labobject(pygame.sprite.Sprite):
 
     def __init__(self, image, list):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(image).convert()
+        self.image = pygame.image.load(image).convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()
         self.pos = random.choice(list)
 
     def draw_me(self):
         """draw object on the screen."""
-        return screen.blit(self.image, self.pos, self.rect)
+        return screen.blit(self.image, self.pos)
 
     def erase_me(self):
         """clears the object on the screen."""
@@ -79,14 +79,14 @@ class Guardian(pygame.sprite.Sprite):
     """Class for the labyrinth guardian."""
     def __init__(self, arrival):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load('Gardien.png').convert()
+        self.image = pygame.image.load('Gardien.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()
         self.pos = self.rect.move(arrival)
 
     def draw_me(self):
         """draw guardian on the screen."""
-        return screen.blit(self.image, self.pos, self.rect)
+        return screen.blit(self.image, self.pos)
 
     def erase_me(self):
         """clears the guardian on the screen."""

@@ -74,6 +74,7 @@ guardian = draw_people(labyrinth, "G", Guardian)
 ether = Labobject('ether.png', list_none)
 needle = Labobject('aiguille.png', list_none)
 
+
 def main():
     while 1:
 
@@ -119,10 +120,10 @@ def main():
                 else:
                     print("YOU LOOSE")
                     return "GAME OVER"
-            player.draw_me()
 
-        pygame.display.update()
+        player.draw_me()
         pygame.display.flip()
+
 
 if __name__ == "__main__":
     main()
