@@ -71,7 +71,7 @@ class Labobject(pygame.sprite.Sprite):
         return screen.blit(self.image, self.pos)
 
     def erase_me(self):
-        """clears the object on the screen."""
+        """clears the object on the screen"""
         self.image.fill((0, 0, 0, 0))
 
 
