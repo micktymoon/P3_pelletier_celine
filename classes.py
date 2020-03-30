@@ -4,6 +4,7 @@
 import sys
 import pygame
 import random
+
 pygame.init()
 
 # Screen creation:
