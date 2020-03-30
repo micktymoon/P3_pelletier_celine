@@ -6,7 +6,6 @@ import pygame
 import random
 from random import randrange
 from classes import*
-
 pygame.init()
 
 # Screen creation:
