@@ -79,29 +79,29 @@ class Player(pygame.sprite.Sprite):
         """move the player on the right."""
 
         self.pos = self.pos.move(self.speed_right)
-        if self.pos.right > 280:
-            self.pos.right = 260
+        if self.pos.right >= 280:
+            self.pos.right = 280
 
     def move_left(self):
         """move the player on the left."""
 
         self.pos = self.pos.move(self.speed_left)
-        if self.pos.left < 0:
-            self.pos.left = 40
+        if self.pos.left <= 0:
+            self.pos.left = 20
 
     def move_up(self):
         """move the player on the top."""
 
         self.pos = self.pos.move(self.speed_up)
-        if self.pos.top < 0:
-            self.pos.top = 40
+        if self.pos.top <= 0:
+            self.pos.top = 20
 
     def move_down(self):
         """move the player on the bottom."""
 
         self.pos = self.pos.move(self.speed_down)
-        if self.pos.bottom > 280:
-            self.pos.bottom = 260
+        if self.pos.bottom >= 280:
+            self.pos.bottom = 280
 
     def draw_me(self):
         """draw player."""
@@ -120,8 +120,8 @@ class Labobject(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.pos = random.choice(list)
 
-    def draw_me(self):
-        """draw object on the screen and return the rectangle of the object."""
+    def my_rect(self):
+        """return the rectangle of the object."""
 
         return screen.blit(self.image, self.pos)
 
@@ -142,12 +142,12 @@ class Guardian(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.pos = self.rect.move(arrival)
 
-    def draw_me(self):
-        """draw guardian on the screen and return the rectangle of the guardian."""
-
-        return screen.blit(self.image, self.pos)
-
     def erase_me(self):
         """clears the guardian on the screen."""
 
-        self.image.fill((0, 0, 0, 0))
+        self.rect = self.image.fill((0, 0, 0, 0))
+
+    def my_rect(self):
+        """return the rect of the object."""
+
+        return screen.blit(self.image, self.pos)

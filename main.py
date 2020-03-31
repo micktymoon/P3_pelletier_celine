@@ -19,10 +19,10 @@ labyrinth.generate_lab()
 labyrinth.display_lab()
 
 
-def draw_character(lab, lettre, classe):
+def draw_character(labconfig, lettre, classe):
     """draw a character on the labyrinth"""
     x = 0
-    for row in lab:
+    for row in labconfig:
         y = 0
         for column in row:
             if column == lettre:
@@ -32,8 +32,22 @@ def draw_character(lab, lettre, classe):
         x += 1
 
 
+def erase_pos_character(labconfig, lettre):
+    """change the lettre of the character to a "x" in the configuration of the labyrinth."""
+    x = 0
+    for row in labconfig:
+        y = 0
+        for column in row:
+            if column == lettre:
+                row[y] = "x"
+                return labconfig
+            y += 1
+        x += 1
+
+
 # draw the characters and the objects on the labyrinth:
 player = draw_character(labyrinth.config, "P", Player)
+labyrinth.config = erase_pos_character(labyrinth.config, "P")
 guardian = draw_character(labyrinth.config, "G", Guardian)
 ether = Labobject('ether.png', labyrinth.l_none)
 needle = Labobject('aiguille.png', labyrinth.l_none)
@@ -45,12 +59,12 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+
             labyrinth.display_lab()
-            guardian.draw_me()
             old_posx = player.pos.x
             old_posy = player.pos.y
-            if event.type == pygame.KEYDOWN:
 
+            if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
                     player.move_up()
 
@@ -63,11 +77,11 @@ def main():
                 if event.key == pygame.K_LEFT:
                     player.move_left()
 
-            if player.pos.colliderect(ether.draw_me()):
+            if player.pos.colliderect(ether.my_rect()):
                 player.obj1 = True
                 ether.erase_me()
 
-            if player.pos.colliderect(needle.draw_me()):
+            if player.pos.colliderect(needle.my_rect()):
                 player.obj2 = True
                 needle.erase_me()
 
@@ -75,15 +89,16 @@ def main():
                 player.pos.x = old_posx
                 player.pos.y = old_posy
 
-            if player.pos.colliderect(guardian.draw_me()):
+            if player.pos.colliderect(guardian.my_rect()):
                 if player.obj1 is True and player.obj2 is True:
-                    print("YOU WIN")
                     guardian.erase_me()
                     player.pos.y = guardian.pos.y + 20
-                    return "CONGRATULATION"
+                    print("YOU WIN")
+                    sys.exit()
+
                 else:
                     print("YOU LOOSE")
-                    return "GAME OVER"
+                    sys.exit()
 
         player.draw_me()
         pygame.display.flip()
