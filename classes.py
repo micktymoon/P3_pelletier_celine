@@ -12,7 +12,6 @@ screen = pygame.display.set_mode((300, 300))
 
 
 class Lab(list):
-
     """Labyrinth Class."""
 
     def __init__(self, fichier):
@@ -25,7 +24,7 @@ class Lab(list):
         self.wall = pygame.image.load('floor-tiles-20x20.png').convert()
 
     def generate_lab(self):
-        """generate the labyrinth"""
+        """Generate the labyrinth"""
 
         with open(self.fichier, "r") as fichier:
             config = []
@@ -38,7 +37,7 @@ class Lab(list):
             self.config = config
 
     def display_lab(self):
-        """diplay the labyrinth, add rectangles of walls to l_wall and blacks rectangles to the l_none"""
+        """Diplay the labyrinth, add rectangles of walls to l_wall and blacks rectangles to the l_none"""
 
         x = 0
         for row in self.config:
@@ -62,7 +61,7 @@ class Player(pygame.sprite.Sprite):
     """Player Class."""
 
     def __init__(self, departure):
-        """Constructor of this class"""
+        """Constructor of this class."""
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('MacGyver.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
@@ -76,35 +75,35 @@ class Player(pygame.sprite.Sprite):
         self.obj2 = False
 
     def move_right(self):
-        """move the player on the right."""
+        """Move the player on the right."""
 
         self.pos = self.pos.move(self.speed_right)
         if self.pos.right >= 280:
             self.pos.right = 280
 
     def move_left(self):
-        """move the player on the left."""
+        """Move the player on the left."""
 
         self.pos = self.pos.move(self.speed_left)
         if self.pos.left <= 0:
             self.pos.left = 20
 
     def move_up(self):
-        """move the player on the top."""
+        """Move the player on the top."""
 
         self.pos = self.pos.move(self.speed_up)
         if self.pos.top <= 0:
             self.pos.top = 20
 
     def move_down(self):
-        """move the player on the bottom."""
+        """Move the player on the bottom."""
 
         self.pos = self.pos.move(self.speed_down)
         if self.pos.bottom >= 280:
             self.pos.bottom = 280
 
     def draw_me(self):
-        """draw player."""
+        """Draw player."""
 
         screen.blit(self.image, self.pos)
 
@@ -121,12 +120,12 @@ class Labobject(pygame.sprite.Sprite):
         self.pos = random.choice(list)
 
     def my_rect(self):
-        """return the rectangle of the object."""
+        """Return the rectangle of the object."""
 
         return screen.blit(self.image, self.pos)
 
     def erase_me(self):
-        """clears the object on the screen"""
+        """Clears the object on the screen"""
 
         self.image.fill((0, 0, 0, 0))
 
@@ -143,11 +142,11 @@ class Guardian(pygame.sprite.Sprite):
         self.pos = self.rect.move(arrival)
 
     def erase_me(self):
-        """clears the guardian on the screen."""
+        """Clears the guardian on the screen."""
 
         self.rect = self.image.fill((0, 0, 0, 0))
 
     def my_rect(self):
-        """return the rect of the object."""
+        """Return the rect of the object."""
 
         return screen.blit(self.image, self.pos)

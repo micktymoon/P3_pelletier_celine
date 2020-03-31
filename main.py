@@ -20,7 +20,9 @@ labyrinth.display_lab()
 
 
 def draw_character(labconfig, lettre, classe):
-    """draw a character on the labyrinth"""
+    """
+    draw a character on the labyrinth
+    """
     x = 0
     for row in labconfig:
         y = 0
@@ -33,7 +35,9 @@ def draw_character(labconfig, lettre, classe):
 
 
 def erase_pos_character(labconfig, lettre):
-    """change the lettre of the character to a "x" in the configuration of the labyrinth."""
+    """
+    change the lettre of the character to a "x" in the configuration of the labyrinth.
+    """
     x = 0
     for row in labconfig:
         y = 0
@@ -54,6 +58,7 @@ needle = Labobject('aiguille.png', labyrinth.l_none)
 
 
 def main():
+
     while 1:
 
         for event in pygame.event.get():
