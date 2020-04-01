@@ -11,7 +11,7 @@ pygame.init()
 screen = pygame.display.set_mode((300, 300))
 
 
-class Lab(list):
+class Lab:
     """Labyrinth Class."""
 
     def __init__(self, fichier):
