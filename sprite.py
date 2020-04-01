@@ -11,56 +11,10 @@ pygame.init()
 screen = pygame.display.set_mode((300, 300))
 
 
-class Lab(list):
-    """Labyrinth Class."""
-
-    def __init__(self, fichier):
-        """Constructor of this class"""
-        self.fichier = fichier
-        self.lab = []
-        self.l_wall = []
-        self.l_none = []
-        self.config = 0
-        self.wall = pygame.image.load('floor-tiles-20x20.png').convert()
-
-    def generate_lab(self):
-        """Generate the labyrinth"""
-
-        with open(self.fichier, "r") as fichier:
-            config = []
-            for raw in fichier:
-                raw_lab = []
-                for lettre in raw:
-                    if lettre != '\n':
-                        raw_lab.append(lettre)
-                config.append(raw_lab)
-            self.config = config
-
-    def display_lab(self):
-        """Diplay the labyrinth, add rectangles of walls to l_wall and blacks rectangles to the l_none"""
-
-        x = 0
-        for row in self.config:
-            y = 0
-            for column in row:
-                if column == 'm':
-                    screen.blit(self.wall, (x * 20, y * 20), (100, 0, 20, 20))
-                    self.l_wall.append(screen.blit(self.wall, (x * 20, y * 20), (100, 0, 20, 20)))
-                if column == 'x':
-                    screen.blit(self.wall, (x * 20, y * 20), (380, 0, 20, 20))
-                    self.l_none.append(screen.blit(self.wall, (x * 20, y * 20), (380, 0, 20, 20)))
-                if column == 'D':
-                    screen.blit(self.wall, (x * 20, y * 20), (160, 20, 20, 20))
-                if column == 'A':
-                    screen.blit(self.wall, (x * 20, y * 20), (160, 20, 20, 20))
-                y += 1
-            x += 1
-
-
 class Player(pygame.sprite.Sprite):
     """Player Class."""
 
-    def __init__(self, departure):
+    def __init__(self, x, y):
         """Constructor of this class."""
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('MacGyver.png').convert_alpha()
@@ -70,7 +24,9 @@ class Player(pygame.sprite.Sprite):
         self.speed_left = [-20, 0]
         self.speed_up = [0, -20]
         self.speed_down = [0, 20]
-        self.pos = self.rect.move(departure)
+        self.pos = self.rect.move((x, y))
+        self.x = x
+        self.y = y
         self.obj1 = False
         self.obj2 = False
 
@@ -119,34 +75,36 @@ class Labobject(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.pos = random.choice(list)
 
+    def draw_me(self):
+        """Display the object image."""
+
+        screen.blit(self.image, self.pos)
+
     def my_rect(self):
         """Return the rectangle of the object."""
 
         return screen.blit(self.image, self.pos)
 
-    def erase_me(self):
-        """Clears the object on the screen"""
-
-        self.image.fill((0, 0, 0, 0))
-
 
 class Guardian(pygame.sprite.Sprite):
     """Class for the labyrinth guardian."""
 
-    def __init__(self, arrival):
+    def __init__(self, x, y):
         """Constructor of this class"""
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load('Gardien.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()
-        self.pos = self.rect.move(arrival)
+        self.x = x
+        self.y = y
+        self.pos = self.rect.move(self.x, self.y)
 
-    def erase_me(self):
-        """Clears the guardian on the screen."""
+    def draw_me(self):
+        """Display the guardian image."""
 
-        self.rect = self.image.fill((0, 0, 0, 0))
+        screen.blit(self.image, self.pos)
 
     def my_rect(self):
-        """Return the rect of the object."""
+        """Return the rectangle of the guardian."""
 
-        return screen.blit(self.image, self.pos)
+        return self.x, self.y, 20, 20

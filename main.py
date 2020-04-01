@@ -5,7 +5,8 @@ import sys
 import pygame
 import random
 from random import randrange
-from classes import*
+from world import*
+from sprite import*
 
 pygame.init()
 
@@ -28,7 +29,7 @@ def draw_character(labconfig, lettre, classe):
         y = 0
         for column in row:
             if column == lettre:
-                o = classe((x * 20, y * 20))
+                o = classe((x*20), (y*20))
                 return o
             y += 1
         x += 1
@@ -65,7 +66,6 @@ def main():
             if event.type == pygame.QUIT:
                 sys.exit()
 
-            labyrinth.display_lab()
             old_posx = player.pos.x
             old_posy = player.pos.y
 
@@ -84,11 +84,9 @@ def main():
 
             if player.pos.colliderect(ether.my_rect()):
                 player.obj1 = True
-                ether.erase_me()
 
             if player.pos.colliderect(needle.my_rect()):
                 player.obj2 = True
-                needle.erase_me()
 
             if player.pos.collidelist(labyrinth.l_wall) != -1:
                 player.pos.x = old_posx
@@ -96,7 +94,6 @@ def main():
 
             if player.pos.colliderect(guardian.my_rect()):
                 if player.obj1 is True and player.obj2 is True:
-                    guardian.erase_me()
                     player.pos.y = guardian.pos.y + 20
                     print("YOU WIN")
                     sys.exit()
@@ -105,6 +102,12 @@ def main():
                     print("YOU LOOSE")
                     sys.exit()
 
+        labyrinth.display_lab()
+        if player.obj1 is False:
+            ether.draw_me()
+        if player.obj2 is False:
+            needle.draw_me()
+        guardian.draw_me()
         player.draw_me()
         pygame.display.flip()
 
