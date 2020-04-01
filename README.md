@@ -33,6 +33,7 @@ MADE WITH:
 
     PyCharm - The IDE for coding
     Pygame - The graphic interface
+    Github - The tools for versionning the project
 
 
 VERSIONS:
