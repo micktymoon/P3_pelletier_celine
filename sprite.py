@@ -80,10 +80,6 @@ class Labobject(pygame.sprite.Sprite):
 
         screen.blit(self.image, self.pos)
 
-    def my_rect(self):
-        """Return the rectangle of the object."""
-
-        return screen.blit(self.image, self.pos)
 
 
 class Guardian(pygame.sprite.Sprite):
