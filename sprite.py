@@ -81,7 +81,6 @@ class Labobject(pygame.sprite.Sprite):
         screen.blit(self.image, self.pos)
 
 
-
 class Guardian(pygame.sprite.Sprite):
     """Class for the labyrinth guardian."""
 

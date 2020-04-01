@@ -4,20 +4,12 @@
 import sys
 import pygame
 import random
+import time
 from random import randrange
 from world import*
 from sprite import*
 
 pygame.init()
-
-# Screen creation:
-screen = pygame.display.set_mode((300, 300))
-# Picture of the walls:
-wall = pygame.image.load('floor-tiles-20x20.png').convert()
-# generate and diplay the labyrinth:
-labyrinth = Lab('labyrinth')
-labyrinth.generate_lab()
-labyrinth.display_lab()
 
 
 def draw_character(labconfig, lettre, classe):
@@ -46,6 +38,14 @@ def erase_pos_character(labconfig, lettre):
         x += 1
 
 
+# Screen creation:
+screen = pygame.display.set_mode((300, 300))
+# Picture of the walls:
+wall = pygame.image.load('floor-tiles-20x20.png').convert()
+# generate and diplay the labyrinth:
+labyrinth = Lab('labyrinth')
+labyrinth.generate_lab()
+labyrinth.display_lab()
 # draw the characters and the objects on the labyrinth:
 player = draw_character(labyrinth.config, "P", Player)
 labyrinth.config = erase_pos_character(labyrinth.config, "P")
@@ -97,7 +97,7 @@ def main():
                 else:
                     print("YOU LOOSE")
                     sys.exit()
-
+        time.sleep(1/60)
         labyrinth.display_lab()
         if player.obj1 is False:
             ether.draw_me()
