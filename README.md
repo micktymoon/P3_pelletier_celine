@@ -20,7 +20,7 @@ This is a labyrinth game. Where you need to collect the two object in the labyri
 ### Installing:
 
 * Download the file .zip on the repository :
-  https://github.com/micktymoon/oc_projet3.git
+[Link to the file.zip](https://github.com/micktymoon/oc_projet3.git)
 * Open the console.
 * Create a new virtual environment :
 ```
