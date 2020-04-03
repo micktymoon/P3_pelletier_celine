@@ -1,6 +1,6 @@
 # Escape the labyrinth!
 
-project 3 for OpenClassRooms's formation
+Project 3 for OpenClassRooms's formation
 
 ## Help MacGiver to run away! 
 
@@ -68,5 +68,5 @@ Céline PELLETIER alias @micktymoon
 
 ## Acknowledgements:
 
--OpenClassRooms for giving me this project to carry out.
--To my Mentor Darius for support and help me.
+- OpenClassRooms for giving me this project to carry out.
+- To my Mentor Darius for support and help me.
