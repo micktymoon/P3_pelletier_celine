@@ -1,2 +1,2 @@
 MyApp
-pygame==1.9.4.post1
+pygame==1.9.4
