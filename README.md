@@ -1,4 +1,4 @@
-# oc_projet3
+# escape the labyrinth
 project 3 for OpenClassRooms's formation
 
 HELP MACGIVER TO RUN AWAY 
@@ -20,11 +20,19 @@ INSTALLING:
 
     - Download the file .zip on the repository :
             https://github.com/micktymoon/oc_projet3.git
-    - Unzip the file.
     - Open the console.
+    - Create a new virtual environment :
+        ~$ python3 -m venv /path/to/new/virtual/environment
+    - Copy paste the .zip in your virtual environment. 
+    - Go to your new virtual environment 
+        ~$ cd path/to/new/virtual/environment
+    - Unzip the file.
+    - Activate the new environment:
+        ~$ source /bin/activate
     - Go to the file that contains the file "main.py" with the command:
-        ~$ cd yourfile/oc_project3
-
+        ~$ cd project_file/
+    - Install the file requirements.txt
+        ~$ pip install -r requirements.txt
     - Start the program with the command :
         ~$ python3 main.py
  
@@ -38,7 +46,7 @@ MADE WITH:
 
 VERSIONS:
 
-I use PyCharm for versionning. For the version available, see this repository :
+I use Git for versionning. For the version available, see this repository :
 
     https://github.com/micktymoon/oc_projet3.git
 
