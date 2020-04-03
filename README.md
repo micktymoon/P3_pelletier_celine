@@ -1,53 +1,72 @@
-# oc_projet3
-project 3 for OpenClassRooms's formation
+# Escape the labyrinth!
 
-HELP MACGIVER TO RUN AWAY 
+Project 3 for OpenClassRooms's formation
+
+## Help MacGiver to run away! 
 
 This is a labyrinth game. Where you need to collect the two object in the labyrinth to put the Guardian allsleep and run away.
 
 
-GETTING STARTED:
+## Getting started:
 
-PREREQUISITES:
+### Prerequisites:
 
-You need to have :
-  - A Python interpretor
-  - PyGame
-  - All the files contained in the .zip
-
-
-INSTALLING:
-
-    - Download the file .zip on the repository :
-            https://github.com/micktymoon/oc_projet3.git
-    - Unzip the file.
-    - Open the console.
-    - Go to the file that contains the file "main.py" with the command:
-        ~$ cd yourfile/oc_project3
-
-    - Start the program with the command :
-        ~$ python3 main.py
- 
-
-MADE WITH:
-
-    PyCharm - The IDE for coding
-    Pygame - The graphic interface
-    Github - The tools for versionning the project
+**You need to have :**
+- A Python interpretor
+- PyGame
+- All the files contained in the .zip
 
 
-VERSIONS:
+### Installing:
 
-I use PyCharm for versionning. For the version available, see this repository :
+* Download the oc_projet3-master.zip on the repository :
+[Link to the oc_projet3-master.zip](https://github.com/micktymoon/oc_projet3.git)
+* Open the console.
+* Create a new virtual environment :
+```
+~$ python3 -m venv /path/to/new/virtual/environment
+```
+* Copy paste the .zip in your virtual environment. 
+* Go to your new virtual environment :
+```
+~$ cd path/to/new/virtual/environment
+```
+* Unzip the file.
+* Activate the new environment:
+```
+~$ source /bin/activate
+```
+* Go to the file that contains the file "main.py" with the command:
+```
+~$ cd project_file/
+```
+* Install the file requirements.txt
+```
+~$ pip install -r requirements.txt
+```
+* Start the program with the command :
+```
+    ~$ python3 main.py
+```
 
-    https://github.com/micktymoon/oc_projet3.git
+## Made with:
+
+* PyCharm - The IDE for coding
+* Pygame - The graphic interface
+* Github - The tools for versionning the project
+
+## Versions:
+
+I use Git for versionning. For the version available, see this repository :
+
+  https://github.com/micktymoon/oc_projet3.git
 
 
-AUTHOR:
+## Author:
 
 Céline PELLETIER alias @micktymoon
 
-ACKNOWLEDGEMENTS:
+## Acknowledgements:
 
-    -OpenClassRooms for giving me this project to carry out.
-    -To my Mentor Darius for support and help me.
+- OpenClassRooms for giving me this project to carry out.
+- To my Mentor Darius for support and help me.
