@@ -2,14 +2,14 @@
 
 project 3 for OpenClassRooms's formation
 
-##Help MacGiver to run away! 
+## Help MacGiver to run away! 
 
 This is a labyrinth game. Where you need to collect the two object in the labyrinth to put the Guardian allsleep and run away.
 
 
-##Getting started:
+## Getting started:
 
-###Prerequisites:
+### Prerequisites:
 
 **You need to have :**
 - A Python interpretor
@@ -17,7 +17,7 @@ This is a labyrinth game. Where you need to collect the two object in the labyri
 - All the files contained in the .zip
 
 
-###Installing:
+### Installing:
 
 * Download the file .zip on the repository :
   https://github.com/micktymoon/oc_projet3.git
@@ -49,24 +49,24 @@ This is a labyrinth game. Where you need to collect the two object in the labyri
   ~$ python3 main.py
 '''
 
-##Made with:
+## Made with:
 
 * PyCharm - The IDE for coding
 * Pygame - The graphic interface
 * Github - The tools for versionning the project
 
-##Versions:
+## Versions:
 
 I use Git for versionning. For the version available, see this repository :
 
   https://github.com/micktymoon/oc_projet3.git
 
 
-##Author:
+## Author:
 
 Céline PELLETIER alias @micktymoon
 
-##Acknowledgements:
+## Acknowledgements:
 
 -OpenClassRooms for giving me this project to carry out.
 -To my Mentor Darius for support and help me.
