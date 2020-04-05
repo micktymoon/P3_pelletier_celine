@@ -12,7 +12,7 @@ from sprite import*
 pygame.init()
 
 
-def draw_character(labconfig, lettre, classe):
+def create_character(labconfig, lettre, classe):
     """Draw a character on the labyrinth."""
     x = 0
     for row in labconfig:
@@ -44,8 +44,8 @@ screen = pygame.display.set_mode((300, 300))
 labyrinth = Lab('labyrinth', screen)
 labyrinth.generate_lab()
 # draw the characters and the objects on the labyrinth:
-player = draw_character(labyrinth.config, "P", Player)
-guardian = draw_character(labyrinth.config, "G", Guardian)
+player = create_character(labyrinth.config, "P", Player)
+guardian = create_character(labyrinth.config, "G", Guardian)
 ether = Labobject('ether.png', labyrinth.l_none, screen)
 for x in labyrinth.l_none:
     if x == ether:
