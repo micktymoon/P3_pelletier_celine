@@ -20,10 +20,6 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.image.load('MacGyver.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()
-        self.speed_right = [20, 0]
-        self.speed_left = [-20, 0]
-        self.speed_up = [0, -20]
-        self.speed_down = [0, 20]
         self.pos = self.rect.move((x, y))
         self.x = x
         self.y = y
@@ -33,28 +29,28 @@ class Player(pygame.sprite.Sprite):
     def move_right(self):
         """Move the player on the right."""
 
-        self.pos = self.pos.move(self.speed_right)
+        self.pos = self.pos.move([20, 0])
         if self.pos.right >= 280:
             self.pos.right = 280
 
     def move_left(self):
         """Move the player on the left."""
 
-        self.pos = self.pos.move(self.speed_left)
+        self.pos = self.pos.move([-20, 0])
         if self.pos.left <= 0:
             self.pos.left = 20
 
     def move_up(self):
         """Move the player on the top."""
 
-        self.pos = self.pos.move(self.speed_up)
+        self.pos = self.pos.move([0, -20])
         if self.pos.top <= 0:
             self.pos.top = 20
 
     def move_down(self):
         """Move the player on the bottom."""
 
-        self.pos = self.pos.move(self.speed_down)
+        self.pos = self.pos.move([0, 20])
         if self.pos.bottom >= 280:
             self.pos.bottom = 280
 
