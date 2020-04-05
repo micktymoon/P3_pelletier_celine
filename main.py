@@ -12,22 +12,22 @@ from sprite import*
 pygame.init()
 
 
-def create_character(labconfig, lettre, classe, screen):
+def create_character(labconfig, lettre, classe, screen1):
     """Draw a character on the labyrinth."""
-    x = 0
+    i = 0
     for row in labconfig:
         y = 0
         for column in row:
             if column == lettre:
-                o = classe((x*20), (y*20), screen)
+                o = classe((i*20), (y*20), screen1)
                 return o
             y += 1
-        x += 1
+        i += 1
 
 
 def erase_pos_character(labconfig, lettre):
     """Change the lettre of the character to a "x" in the configuration of the labyrinth."""
-    x = 0
+    i = 0
     for row in labconfig:
         y = 0
         for column in row:
@@ -35,7 +35,7 @@ def erase_pos_character(labconfig, lettre):
                 row[y] = 'x'
                 return labconfig
             y += 1
-        x += 1
+        i += 1
 
 
 # Screen creation:
