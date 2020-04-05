@@ -17,17 +17,15 @@ class Lab:
     def __init__(self, fichier):
         """Constructor of this class"""
         self.fichier = fichier
-        self.lab = []
         self.l_wall = []
         self.l_none = []
-        self.config = 0
+        self.config = []
         self.wall = pygame.image.load('floor-tiles-20x20.png').convert()
 
     def generate_lab(self):
         """Generate the labyrinth"""
 
         with open(self.fichier, "r") as fichier:
-            config = []
             x = 0
             for row in fichier:
                 row_lab = []
@@ -41,8 +39,7 @@ class Lab:
                         self.l_none.append((x*20, y*20, 20, 20))
                     y += 1
                 x += 1
-                config.append(row_lab)
-            self.config = config
+                self.config.append(row_lab)
 
     def display_lab(self):
         """Diplay the labyrinth, add rectangles of walls to l_wall and blacks rectangles to the l_none"""
@@ -61,5 +58,3 @@ class Lab:
                     screen.blit(self.wall, (x * 20, y * 20), (160, 20, 20, 20))
                 y += 1
             x += 1
-
-
