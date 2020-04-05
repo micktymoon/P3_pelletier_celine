@@ -32,7 +32,7 @@ def erase_pos_character(labconfig, lettre):
         y = 0
         for column in row:
             if column == lettre:
-                row[y] = "x"
+                row[y] = 'x'
                 return labconfig
             y += 1
         x += 1
@@ -46,10 +46,13 @@ labyrinth.generate_lab()
 labyrinth.display_lab()
 # draw the characters and the objects on the labyrinth:
 player = draw_character(labyrinth.config, "P", Player)
-labyrinth.config = erase_pos_character(labyrinth.config, "P")
 guardian = draw_character(labyrinth.config, "G", Guardian)
 ether = Labobject('ether.png', labyrinth.l_none, screen)
+for x in labyrinth.l_none:
+    if x == ether:
+        del labyrinth.l_none[x]
 needle = Labobject('aiguille.png', labyrinth.l_none, screen)
+erase_pos_character(labyrinth.config, "P")
 
 
 def main():
