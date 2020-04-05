@@ -43,7 +43,6 @@ screen = pygame.display.set_mode((300, 300))
 # generate and diplay the labyrinth:
 labyrinth = Lab('labyrinth', screen)
 labyrinth.generate_lab()
-labyrinth.display_lab()
 # draw the characters and the objects on the labyrinth:
 player = draw_character(labyrinth.config, "P", Player)
 guardian = draw_character(labyrinth.config, "G", Guardian)
