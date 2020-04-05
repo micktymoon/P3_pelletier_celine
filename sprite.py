@@ -7,16 +7,14 @@ import random
 
 pygame.init()
 
-# Screen creation:
-screen = pygame.display.set_mode((300, 300))
-
 
 class Player(pygame.sprite.Sprite):
     """Player Class."""
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, screen):
         """Constructor of this class."""
         pygame.sprite.Sprite.__init__(self)
+        self.screen = screen
         self.image = pygame.image.load('MacGyver.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()
@@ -57,15 +55,16 @@ class Player(pygame.sprite.Sprite):
     def draw_me(self):
         """Draw player."""
 
-        screen.blit(self.image, self.pos)
+        self.screen.blit(self.image, self.pos)
 
 
 class Labobject(pygame.sprite.Sprite):
     """Class for labyrinth objects."""
 
-    def __init__(self, image, list):
+    def __init__(self, image, list, screen):
         """Constructor of this class"""
         pygame.sprite.Sprite.__init__(self)
+        self.screen = screen
         self.image = pygame.image.load(image).convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()
@@ -74,15 +73,16 @@ class Labobject(pygame.sprite.Sprite):
     def draw_me(self):
         """Display the object image."""
 
-        screen.blit(self.image, self.pos)
+        self.screen.blit(self.image, self.pos)
 
 
 class Guardian(pygame.sprite.Sprite):
     """Class for the labyrinth guardian."""
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, screen):
         """Constructor of this class"""
         pygame.sprite.Sprite.__init__(self)
+        self.screen = screen
         self.image = pygame.image.load('Gardien.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()
@@ -93,7 +93,7 @@ class Guardian(pygame.sprite.Sprite):
     def draw_me(self):
         """Display the guardian image."""
 
-        screen.blit(self.image, self.pos)
+        self.screen.blit(self.image, self.pos)
 
     def my_rect(self):
         """Return the rectangle of the guardian."""

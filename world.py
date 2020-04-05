@@ -14,8 +14,9 @@ screen = pygame.display.set_mode((300, 300))
 class Lab:
     """Labyrinth Class."""
 
-    def __init__(self, fichier):
+    def __init__(self, fichier, screen):
         """Constructor of this class"""
+        self.screen = screen
         self.fichier = fichier
         self.l_wall = []
         self.l_none = []
@@ -49,12 +50,12 @@ class Lab:
             y = 0
             for column in row:
                 if column == 'm':
-                    screen.blit(self.wall, (x * 20, y * 20), (100, 0, 20, 20))
+                    self.screen.blit(self.wall, (x * 20, y * 20), (100, 0, 20, 20))
                 if column == 'x':
-                    screen.blit(self.wall, (x * 20, y * 20), (380, 0, 20, 20))
+                    self.screen.blit(self.wall, (x * 20, y * 20), (380, 0, 20, 20))
                 if column == 'D':
-                    screen.blit(self.wall, (x * 20, y * 20), (160, 20, 20, 20))
+                    self.screen.blit(self.wall, (x * 20, y * 20), (160, 20, 20, 20))
                 if column == 'A':
-                    screen.blit(self.wall, (x * 20, y * 20), (160, 20, 20, 20))
+                    self.screen.blit(self.wall, (x * 20, y * 20), (160, 20, 20, 20))
                 y += 1
             x += 1

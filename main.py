@@ -19,7 +19,7 @@ def draw_character(labconfig, lettre, classe):
         y = 0
         for column in row:
             if column == lettre:
-                o = classe((x*20), (y*20))
+                o = classe((x*20), (y*20), screen)
                 return o
             y += 1
         x += 1
@@ -40,18 +40,16 @@ def erase_pos_character(labconfig, lettre):
 
 # Screen creation:
 screen = pygame.display.set_mode((300, 300))
-# Picture of the walls:
-wall = pygame.image.load('floor-tiles-20x20.png').convert()
 # generate and diplay the labyrinth:
-labyrinth = Lab('labyrinth')
+labyrinth = Lab('labyrinth', screen)
 labyrinth.generate_lab()
 labyrinth.display_lab()
 # draw the characters and the objects on the labyrinth:
 player = draw_character(labyrinth.config, "P", Player)
 labyrinth.config = erase_pos_character(labyrinth.config, "P")
 guardian = draw_character(labyrinth.config, "G", Guardian)
-ether = Labobject('ether.png', labyrinth.l_none)
-needle = Labobject('aiguille.png', labyrinth.l_none)
+ether = Labobject('ether.png', labyrinth.l_none, screen)
+needle = Labobject('aiguille.png', labyrinth.l_none, screen)
 
 
 def main():
