@@ -13,7 +13,7 @@ pygame.init()
 
 
 def create_character(labconfig, lettre, classe, screen1):
-    """Draw a character on the P3_09_map."""
+    """Draw a character on the labyrinth."""
     i = 0
     for row in labconfig:
         y = 0
@@ -26,7 +26,7 @@ def create_character(labconfig, lettre, classe, screen1):
 
 
 def erase_pos_character(labconfig, lettre):
-    """Change the lettre of the character to a "x" in the configuration of the P3_09_map."""
+    """Change the lettre of the character to a "x" in the configuration of the labyrinth."""
     i = 0
     for row in labconfig:
         y = 0
@@ -42,17 +42,17 @@ def main():
 
     # Screen creation:
     screengame = pygame.display.set_mode((300, 300))
-    # Generate and diplay the P3_09_map:
-    labyrinth = Lab('P3_09_map', screengame)
+    # Generate and diplay the labyrinth:
+    labyrinth = Lab('labyrinth', screengame)
     labyrinth.generate_lab()
-    # Draw the characters and the objects on the P3_09_map:
+    # Draw the characters and the objects on the labyrinth:
     player = create_character(labyrinth.config, "P", Player, screengame)
     guardian = create_character(labyrinth.config, "G", Guardian, screengame)
-    ether = Labobject('P3_05_ether.png', labyrinth.l_none, screengame)
+    ether = Labobject('ether.png', labyrinth.l_none, screengame)
     for x in labyrinth.l_none:
         if x == ether:
             del labyrinth.l_none[x]
-    needle = Labobject('P3_04_aiguille.png', labyrinth.l_none, screengame)
+    needle = Labobject('aiguille.png', labyrinth.l_none, screengame)
     erase_pos_character(labyrinth.config, "P")
 
     while 1:

@@ -21,10 +21,10 @@ class Lab:
         self.l_wall = []
         self.l_none = []
         self.config = []
-        self.wall = pygame.image.load('P3_06_wall-tiles-20x20.png').convert()
+        self.wall = pygame.image.load('floor-tiles-20x20.png').convert()
 
     def generate_lab(self):
-        """Generate the P3_09_map"""
+        """Generate the labyrinth"""
 
         with open(self.fichier, "r") as fichier:
             x = 0
@@ -43,7 +43,7 @@ class Lab:
                 self.config.append(row_lab)
 
     def display_lab(self):
-        """Diplay the P3_09_map, add rectangles of walls to l_wall and blacks rectangles to the l_none"""
+        """Diplay the labyrinth, add rectangles of walls to l_wall and blacks rectangles to the l_none"""
 
         x = 0
         for row in self.config:

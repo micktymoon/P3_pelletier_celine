@@ -15,7 +15,7 @@ class Player(pygame.sprite.Sprite):
         """Constructor of this class."""
         pygame.sprite.Sprite.__init__(self)
         self.screen = screen
-        self.image = pygame.image.load('P3_08_MacGyver.png').convert_alpha()
+        self.image = pygame.image.load('MacGyver.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()
         self.pos = self.rect.move((x, y))
@@ -59,7 +59,7 @@ class Player(pygame.sprite.Sprite):
 
 
 class Labobject(pygame.sprite.Sprite):
-    """Class for P3_09_map objects."""
+    """Class for labyrinth objects."""
 
     def __init__(self, image, list, screen):
         """Constructor of this class"""
@@ -77,13 +77,13 @@ class Labobject(pygame.sprite.Sprite):
 
 
 class Guardian(pygame.sprite.Sprite):
-    """Class for the P3_09_map guardian."""
+    """Class for the labyrinth guardian."""
 
     def __init__(self, x, y, screen):
         """Constructor of this class"""
         pygame.sprite.Sprite.__init__(self)
         self.screen = screen
-        self.image = pygame.image.load('P3_07_Gardien.png').convert_alpha()
+        self.image = pygame.image.load('Gardien.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()
         self.x = x
