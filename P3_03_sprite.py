@@ -88,7 +88,7 @@ class Guardian(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y
-        self.pos = self.rect.move(self.x, self.y)
+        self.pos = self.rect.move(x, y)
 
     def draw_me(self):
         """Display the guardian image."""
