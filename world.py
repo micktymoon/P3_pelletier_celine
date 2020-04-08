@@ -1,14 +1,7 @@
 #!/usr/bin/python3
 # -*-coding: utf8 -*-
 
-import sys
 import pygame
-import random
-
-pygame.init()
-
-# Screen creation:
-screen = pygame.display.set_mode((300, 300))
 
 
 class Lab:

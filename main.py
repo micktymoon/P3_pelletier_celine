@@ -3,13 +3,9 @@
 
 import sys
 import pygame
-import random
 import time
-from random import randrange
-from P3_02_world import*
-from P3_03_sprite import*
-
-pygame.init()
+from world import Lab
+from sprite import Labobject, Guardian, Player
 
 
 def create_character(labconfig, lettre, classe, screen1):
@@ -40,6 +36,7 @@ def erase_pos_character(labconfig, lettre):
 
 def main():
 
+    pygame.init()
     # Screen creation:
     screengame = pygame.display.set_mode((300, 300))
     # Generate and diplay the labyrinth:

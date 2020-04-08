@@ -1,11 +1,8 @@
 #!/usr/bin/python3
 # -*-coding: utf8 -*-
 
-import sys
 import pygame
 import random
-
-pygame.init()
 
 
 class Player(pygame.sprite.Sprite):
@@ -13,7 +10,8 @@ class Player(pygame.sprite.Sprite):
 
     def __init__(self, x, y, screen):
         """Constructor of this class."""
-        pygame.sprite.Sprite.__init__(self)
+
+        super(Player, self).__init__()
         self.screen = screen
         self.image = pygame.image.load('MacGyver.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
@@ -63,7 +61,7 @@ class Labobject(pygame.sprite.Sprite):
 
     def __init__(self, image, list, screen):
         """Constructor of this class"""
-        pygame.sprite.Sprite.__init__(self)
+        super(Labobject, self).__init__()
         self.screen = screen
         self.image = pygame.image.load(image).convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
@@ -81,7 +79,7 @@ class Guardian(pygame.sprite.Sprite):
 
     def __init__(self, x, y, screen):
         """Constructor of this class"""
-        pygame.sprite.Sprite.__init__(self)
+        super(Guardian, self).__init__()
         self.screen = screen
         self.image = pygame.image.load('Gardien.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
