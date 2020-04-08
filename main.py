@@ -38,24 +38,22 @@ def erase_pos_character(labconfig, lettre):
         i += 1
 
 
-# Screen creation:
-screen = pygame.display.set_mode((300, 300))
-# generate and diplay the labyrinth:
-labyrinth = Lab('labyrinth', screen)
-labyrinth.generate_lab()
-# draw the characters and the objects on the labyrinth:
-player = create_character(labyrinth.config, "P", Player, screen)
-guardian = create_character(labyrinth.config, "G", Guardian, screen)
-ether = Labobject('ether.png', labyrinth.l_none, screen)
-for x in labyrinth.l_none:
-    if x == ether:
-        del labyrinth.l_none[x]
-needle = Labobject('aiguille.png', labyrinth.l_none, screen)
-erase_pos_character(labyrinth.config, "P")
-
-
 def main():
 
+    # Screen creation:
+    screengame = pygame.display.set_mode((300, 300))
+    # Generate and diplay the labyrinth:
+    labyrinth = Lab('labyrinth', screengame)
+    labyrinth.generate_lab()
+    # Draw the characters and the objects on the labyrinth:
+    player = create_character(labyrinth.config, "P", Player, screengame)
+    guardian = create_character(labyrinth.config, "G", Guardian, screengame)
+    ether = Labobject('ether.png', labyrinth.l_none, screengame)
+    for x in labyrinth.l_none:
+        if x == ether:
+            del labyrinth.l_none[x]
+    needle = Labobject('aiguille.png', labyrinth.l_none, screengame)
+    erase_pos_character(labyrinth.config, "P")
     while 1:
 
         for event in pygame.event.get():
