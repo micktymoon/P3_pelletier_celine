@@ -54,6 +54,7 @@ def main():
             del labyrinth.l_none[x]
     needle = Labobject('aiguille.png', labyrinth.l_none, screengame)
     erase_pos_character(labyrinth.config, "P")
+
     while 1:
 
         for event in pygame.event.get():
@@ -95,6 +96,7 @@ def main():
                 else:
                     print("YOU LOOSE")
                     sys.exit()
+
         time.sleep(1/60)
         labyrinth.display_lab()
         if player.obj1 is False:
