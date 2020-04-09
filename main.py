@@ -22,7 +22,7 @@ def create_character(labconfig, lettre, classe, screen1):
 
 
 def erase_pos_character(labconfig, lettre):
-    """Change the lettre of the character to a "x" in the configuration of the labyrinth."""
+    """Change the lettre to a "x" in the configuration of the labyrinth."""
     i = 0
     for row in labconfig:
         y = 0
@@ -107,4 +107,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
