@@ -2,7 +2,6 @@
 # -*-coding: utf8 -*-
 
 import pygame
-import random
 
 
 class Player(pygame.sprite.Sprite):
@@ -21,6 +20,7 @@ class Player(pygame.sprite.Sprite):
         self.y = y
         self.obj1 = False
         self.obj2 = False
+        self.obj3 = False
 
     def move_right(self):
         """Move the player on the right."""
@@ -54,46 +54,3 @@ class Player(pygame.sprite.Sprite):
         """Draw player."""
 
         self.screen.blit(self.image, self.pos)
-
-
-class Labobject(pygame.sprite.Sprite):
-    """Class for labyrinth objects."""
-
-    def __init__(self, image, list, screen):
-        """Constructor of this class"""
-        super(Labobject, self).__init__()
-        self.screen = screen
-        self.image = pygame.image.load(image).convert_alpha()
-        self.image = pygame.transform.scale(self.image, (20, 20))
-        self.rect = self.image.get_rect()
-        self.pos = random.choice(list)
-
-    def draw_me(self):
-        """Display the object image."""
-
-        self.screen.blit(self.image, self.pos)
-
-
-class Guardian(pygame.sprite.Sprite):
-    """Class for the labyrinth guardian."""
-
-    def __init__(self, x, y, screen):
-        """Constructor of this class"""
-        super(Guardian, self).__init__()
-        self.screen = screen
-        self.image = pygame.image.load('Gardien.png').convert_alpha()
-        self.image = pygame.transform.scale(self.image, (20, 20))
-        self.rect = self.image.get_rect()
-        self.x = x
-        self.y = y
-        self.pos = self.rect.move(x, y)
-
-    def draw_me(self):
-        """Display the guardian image."""
-
-        self.screen.blit(self.image, self.pos)
-
-    def my_rect(self):
-        """Return the rectangle of the guardian."""
-
-        return self.x, self.y, 20, 20

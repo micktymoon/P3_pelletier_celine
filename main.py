@@ -4,34 +4,11 @@
 import sys
 import pygame
 import time
-from world import Lab
-from sprite import Labobject, Guardian, Player
-
-
-def create_character(labconfig, lettre, classe, screen1):
-    """Draw a character on the labyrinth."""
-    i = 0
-    for row in labconfig:
-        y = 0
-        for column in row:
-            if column == lettre:
-                o = classe((i*20), (y*20), screen1)
-                return o
-            y += 1
-        i += 1
-
-
-def erase_pos_character(labconfig, lettre):
-    """Change the lettre of the character to a "x" in the configuration of the labyrinth."""
-    i = 0
-    for row in labconfig:
-        y = 0
-        for column in row:
-            if column == lettre:
-                row[y] = 'x'
-                return labconfig
-            y += 1
-        i += 1
+from class_labyrinth import Lab
+from class_player import Player
+from class_guardian import Guardian
+from class_object import Labobject
+from fonction import create_character, erase_pos_character, erase_pos_object
 
 
 def main():
@@ -46,10 +23,10 @@ def main():
     player = create_character(labyrinth.config, "P", Player, screengame)
     guardian = create_character(labyrinth.config, "G", Guardian, screengame)
     ether = Labobject('ether.png', labyrinth.l_none, screengame)
-    for x in labyrinth.l_none:
-        if x == ether:
-            del labyrinth.l_none[x]
+    erase_pos_object(labyrinth.l_none, ether)
     needle = Labobject('aiguille.png', labyrinth.l_none, screengame)
+    erase_pos_object(labyrinth.l_none, needle)
+    pipe = Labobject('tube_plastique.png', labyrinth.l_none, screengame)
     erase_pos_character(labyrinth.config, "P")
 
     while 1:
@@ -80,12 +57,15 @@ def main():
             if player.pos.colliderect(needle.pos):
                 player.obj2 = True
 
+            if player.pos.colliderect(pipe.pos):
+                player.obj3 = True
+
             if player.pos.collidelist(labyrinth.l_wall) != -1:
                 player.pos.x = old_posx
                 player.pos.y = old_posy
 
             if player.pos.colliderect(guardian.my_rect()):
-                if player.obj1 is True and player.obj2 is True:
+                if player.obj1 is True and player.obj2 is True and player.obj3 is True:
                     player.pos.y = guardian.pos.y + 20
                     print("YOU WIN")
                     sys.exit()
@@ -100,6 +80,8 @@ def main():
             ether.draw_me()
         if player.obj2 is False:
             needle.draw_me()
+        if player.obj3 is False:
+            pipe.draw_me()
         guardian.draw_me()
         player.draw_me()
         pygame.display.flip()
