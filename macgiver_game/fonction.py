@@ -55,8 +55,8 @@ def erase_pos_character(labconfig, lettre):
     :param lettre : the lettre of the character we want to create.
     :type lettre : str.
 
-    This function replace the character's letter in the labyrinth configuration
-    with a 'x', this indicates an empty position.
+    This function replace the character's letter in the labyrinth
+    configuration with a 'x', this indicates an empty position.
 
     Returns:
 
@@ -146,7 +146,7 @@ def main():
                 player.pos.y = old_posy
 
             if player.pos.colliderect(guardian.my_rect()):
-                if player.obj1 is True and player.obj2 is True and player.obj3 is True:
+                if player.obj1 and player.obj2 and player.obj3 is True:
                     player.pos.y = guardian.pos.y + 20
                     print("YOU WIN")
                     sys.exit()
