@@ -6,10 +6,22 @@ import os
 
 
 class Player(pygame.sprite.Sprite):
-    """Player Class."""
+    """Class for the labyrinth player."""
 
     def __init__(self, x, y, screen):
-        """Constructor of this class."""
+        """Constructor of this class.
+
+        Parameters:
+        :param x : the character's position x on the labyrinth's configuration.
+        :type x : int.
+        :param y : the character's position y on the labyrinth's configuration.
+        :type y : int.
+        :param screen : the game screen.
+        :type screen : pygame surface.
+
+        The constructor allows you to create a Player object with an image,
+        a position and 3 objects.
+        """
 
         super(Player, self).__init__()
         self.screen = screen
@@ -52,6 +64,6 @@ class Player(pygame.sprite.Sprite):
             self.pos.bottom = 280
 
     def draw_me(self):
-        """Draw player."""
+        """Display the player's image on the game screen."""
 
         self.screen.blit(self.image, self.pos)

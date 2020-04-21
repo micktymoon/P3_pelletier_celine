@@ -10,21 +10,59 @@ from classes.class_guardian import Guardian
 from classes.class_object import Labobject
 
 
-def create_character(labconfig, lettre, classe, screen1):
-    """Draw a character on the labyrinth."""
+def create_character(labconfig, lettre, class_char, screen1):
+    """
+    Create a character on the labyrinth.
+
+    Parameters:
+
+     :param labconfig : the labyrinth configuration.
+     :type labconfig : list.
+     :param lettre : the lettre of the character we want to create.
+     :type lettre : str.
+     :param class_char : the character's classe.
+     :type class_char : class.
+     :param screen1 : the game screen.
+     :type screen1 : pygame surface.
+
+    This function create a character in the labyrinth configuration,
+    using his letter in the configuration and his class.
+
+     Returns:
+
+     :return: the character in the game screen.
+     :rtype: class object.
+    """
     i = 0
     for row in labconfig:
         y = 0
         for column in row:
             if column == lettre:
-                o = classe((i*20), (y*20), screen1)
+                o = class_char((i * 20), (y * 20), screen1)
                 return o
             y += 1
         i += 1
 
 
 def erase_pos_character(labconfig, lettre):
-    """Change the lettre of the character to a "x" in the configuration of the labyrinth."""
+    """
+    Change the character's lettre to a "x" in the labyrinth's configuration.
+
+    Parameters:
+
+    :param labconfig : the labyrinth configuration.
+    :type labconfig : list.
+    :param lettre : the lettre of the character we want to create.
+    :type lettre : str.
+
+    This function replace the character's letter in the labyrinth configuration
+    with a 'x', this indicates an empty position.
+
+    Returns:
+
+    :return: the labyrinth configuration.
+    :rtype: list.
+    """
     i = 0
     for row in labconfig:
         y = 0
@@ -37,14 +75,25 @@ def erase_pos_character(labconfig, lettre):
 
 
 def erase_pos_object(list_none, object_lab):
-    """erase the position of an object from the liste of empty positions."""
+    """Erase the object position from the list of the empty position
+
+    Parameters:
+
+    :param list_none : empty labyrinth position list.
+    :type list_none : list.
+    :param object_lab : labyrinth object.
+    :type : Lab_object object.
+
+    This function delete the position of the object in the list given as a
+    parameter, to prevent multiple objects from being in the same position.
+    """
     for x in list_none:
         if x == object_lab:
             del list_none[x]
 
 
 def main():
-    """run the game"""
+    """Run the game."""
     pygame.init()
     # Screen creation:
     screengame = pygame.display.set_mode((300, 300))

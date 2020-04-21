@@ -8,17 +8,32 @@ import os
 class Lab:
     """Labyrinth Class."""
 
-    def __init__(self, fichier, screen):
-        """Constructor of this class"""
+    def __init__(self, file, screen):
+        """Constructor of this class.
+
+        Parameters :
+
+        :param file : a file of the labyrinth configuration.
+        :type file : file
+        :param screen : the game screen.
+        :type screen : pygame surface.
+
+        The constructor create a labyrinth with an image for each element,
+        a wall list, a list of empty positions and a configuration.
+        """
         self.screen = screen
-        self.fichier = fichier
+        self.fichier = file
         self.l_wall = []
         self.l_none = []
         self.config = []
         self.wall = pygame.image.load(os.path.join('image', 'floor-tiles-20x20.png')).convert()
 
     def generate_lab(self):
-        """Generate the labyrinth"""
+        """
+        Generate the labyrinth configuration from file,
+        add the wall positions to the wall list and
+        the empty positions to the empty position.
+        """
 
         with open(self.fichier, "r") as fichier:
             x = 0
@@ -37,7 +52,10 @@ class Lab:
                 self.config.append(row_lab)
 
     def display_lab(self):
-        """Diplay the labyrinth, add rectangles of walls to l_wall and blacks rectangles to the l_none"""
+        """
+        Diplay the image for each elements of the labyrinth
+        in the game screen.
+        """
 
         x = 0
         for row in self.config:
