@@ -34,7 +34,7 @@ This is a labyrinth game. Where you need to collect the two object in the labyri
 * Unzip the file.
 * Activate the new environment:
 ```
-~$ source /bin/activate
+~$ source bin/activate
 ```
 * Go to the file that contains the file "main.py" with the command:
 ```
