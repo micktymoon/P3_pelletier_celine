@@ -107,7 +107,7 @@ def main():
     erase_pos_object(labyrinth.l_none, ether)
     needle = Labobject('aiguille.png', labyrinth.l_none, screengame)
     erase_pos_object(labyrinth.l_none, needle)
-    pipe = Labobject('tube_plastique.png', labyrinth.l_none, screengame)
+    pipe = Labobject('tube.png', labyrinth.l_none, screengame)
     erase_pos_character(labyrinth.config, "P")
 
     while 1:

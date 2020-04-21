@@ -12,9 +12,11 @@ class Player(pygame.sprite.Sprite):
         """Constructor of this class.
 
         Parameters:
-        :param x : the character's position x on the labyrinth's configuration.
+        :param x : the character's position x on the labyrinth's
+                    configuration.
         :type x : int.
-        :param y : the character's position y on the labyrinth's configuration.
+        :param y : the character's position y on the labyrinth's
+                    configuration.
         :type y : int.
         :param screen : the game screen.
         :type screen : pygame surface.
@@ -25,7 +27,8 @@ class Player(pygame.sprite.Sprite):
 
         super(Player, self).__init__()
         self.screen = screen
-        self.image = pygame.image.load(os.path.join('image', 'MacGyver.png')).convert_alpha()
+        self.image = pygame.image.load(os.path.join('image', 'MacGyver.png'))\
+            .convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()
         self.pos = self.rect.move((x, y))

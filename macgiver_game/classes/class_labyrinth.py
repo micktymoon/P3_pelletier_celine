@@ -26,7 +26,8 @@ class Lab:
         self.l_wall = []
         self.l_none = []
         self.config = []
-        self.wall = pygame.image.load(os.path.join('image', 'floor-tiles-20x20.png')).convert()
+        self.wall = pygame.image.load(os.path.join('image', 'wall.png'))\
+            .convert()
 
     def generate_lab(self):
         """
@@ -62,12 +63,16 @@ class Lab:
             y = 0
             for column in row:
                 if column == 'm':
-                    self.screen.blit(self.wall, (x * 20, y * 20), (100, 0, 20, 20))
+                    self.screen.blit(self.wall, (x*20, y*20),
+                                     (100, 0, 20, 20))
                 if column == 'x':
-                    self.screen.blit(self.wall, (x * 20, y * 20), (380, 0, 20, 20))
+                    self.screen.blit(self.wall, (x*20, y*20),
+                                     (380, 0, 20, 20))
                 if column == 'D':
-                    self.screen.blit(self.wall, (x * 20, y * 20), (160, 20, 20, 20))
+                    self.screen.blit(self.wall, (x*20, y*20),
+                                     (160, 20, 20, 20))
                 if column == 'A':
-                    self.screen.blit(self.wall, (x * 20, y * 20), (160, 20, 20, 20))
+                    self.screen.blit(self.wall, (x*20, y*20),
+                                     (160, 20, 20, 20))
                 y += 1
             x += 1

@@ -15,16 +15,18 @@ class Labobject(pygame.sprite.Sprite):
 
         :param image : the image of the object we want to create.
         :type image : image.
-        :param list_ : list of the positions where the object can be positioned.
+        :param list_ : position list where the object can be positioned.
         :type : list.
         :param screen : the game screen.
         :type screen : pygame surface.
 
-        The constructor create a Labobject object with an image and a random position.
+        The constructor create a Labobject object with an image
+        and a random position.
         """
         super(Labobject, self).__init__()
         self.screen = screen
-        self.image = pygame.image.load(os.path.join('image', image)).convert_alpha()
+        self.image = pygame.image.load(os.path.join('image', image))\
+            .convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()
         self.pos = random.choice(list_)
