@@ -2,6 +2,7 @@
 # -*-coding: utf8 -*-
 
 import pygame
+import os
 
 
 class Lab:
@@ -14,7 +15,7 @@ class Lab:
         self.l_wall = []
         self.l_none = []
         self.config = []
-        self.wall = pygame.image.load('floor-tiles-20x20.png').convert()
+        self.wall = pygame.image.load(os.path.join('image', 'floor-tiles-20x20.png')).convert()
 
     def generate_lab(self):
         """Generate the labyrinth"""

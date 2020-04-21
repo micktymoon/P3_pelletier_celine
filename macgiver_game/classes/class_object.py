@@ -2,6 +2,7 @@
 # -*-coding: utf8 -*-
 import pygame
 import random
+import os
 
 
 class Labobject(pygame.sprite.Sprite):
@@ -11,7 +12,7 @@ class Labobject(pygame.sprite.Sprite):
         """Constructor of this class"""
         super(Labobject, self).__init__()
         self.screen = screen
-        self.image = pygame.image.load(image).convert_alpha()
+        self.image = pygame.image.load(os.path.join('image', image)).convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()
         self.pos = random.choice(list)

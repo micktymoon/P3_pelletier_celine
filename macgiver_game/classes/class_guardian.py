@@ -2,6 +2,7 @@
 # -*-coding: utf8 -*-
 
 import pygame
+import os
 
 
 class Guardian(pygame.sprite.Sprite):
@@ -11,7 +12,7 @@ class Guardian(pygame.sprite.Sprite):
         """Constructor of this class"""
         super(Guardian, self).__init__()
         self.screen = screen
-        self.image = pygame.image.load('Gardien.png').convert_alpha()
+        self.image = pygame.image.load(os.path.join('image', 'Gardien.png')).convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()
         self.x = x

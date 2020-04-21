@@ -2,6 +2,7 @@
 # -*-coding: utf8 -*-
 
 import pygame
+import os
 
 
 class Player(pygame.sprite.Sprite):
@@ -12,7 +13,7 @@ class Player(pygame.sprite.Sprite):
 
         super(Player, self).__init__()
         self.screen = screen
-        self.image = pygame.image.load('MacGyver.png').convert_alpha()
+        self.image = pygame.image.load(os.path.join('image', 'MacGyver.png')).convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()
         self.pos = self.rect.move((x, y))
