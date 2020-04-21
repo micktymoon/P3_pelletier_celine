@@ -4,10 +4,10 @@
 import sys
 import pygame
 import time
-from macgiver_game.classes.class_labyrinth import Lab
-from macgiver_game.classes.class_player import Player
-from macgiver_game.classes.class_guardian import Guardian
-from macgiver_game.classes.class_object import Labobject
+from classes.class_labyrinth import Lab
+from classes.class_player import Player
+from classes.class_guardian import Guardian
+from classes.class_object import Labobject
 
 
 def create_character(labconfig, lettre, classe, screen1):
