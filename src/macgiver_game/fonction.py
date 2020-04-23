@@ -108,11 +108,14 @@ def main():
     # Draw the characters and the objects on the labyrinth:
     player = create_character(labyrinth.config, "P", Player, screengame)
     guardian = create_character(labyrinth.config, "G", Guardian, screengame)
-    ether = Labobject(path_to_image('ether.png'), labyrinth.l_none, screengame)
+    path_ether = path_to_image('ether.png')
+    ether = Labobject(path_ether, labyrinth.l_none, screengame)
     erase_pos_object(labyrinth.l_none, ether)
-    needle = Labobject(path_to_image('aiguille.png'), labyrinth.l_none, screengame)
+    path_needle = path_to_image('aiguille.png')
+    needle = Labobject(path_needle, labyrinth.l_none, screengame)
     erase_pos_object(labyrinth.l_none, needle)
-    pipe = Labobject(path_to_image('tube.png'), labyrinth.l_none, screengame)
+    path_pipe = path_to_image('tube.png')
+    pipe = Labobject(path_pipe, labyrinth.l_none, screengame)
     erase_pos_character(labyrinth.config, "P")
 
     while 1:
