@@ -2,32 +2,33 @@
 # -*-coding: utf8 -*-
 
 import pygame
-import os
+from macgiver_game.fonction_chemin import path_to_image
 
 
 class Lab:
     """Labyrinth Class."""
 
     def __init__(self, file, screen):
-        """Constructor of this class.
+        """
+        Constructor of this class.
 
         Parameters :
 
         :param file : a file of the labyrinth configuration.
-        :type file : file
+        :type file : str
         :param screen : the game screen.
-        :type screen : pygame surface.
+        :type screen : pygame.surface.Surface
 
         The constructor create a labyrinth with an image for each element,
         a wall list, a list of empty positions and a configuration.
         """
+
         self.screen = screen
         self.fichier = file
         self.l_wall = []
         self.l_none = []
         self.config = []
-        self.wall = pygame.image.load(os.path.join('image', 'wall.png'))\
-            .convert()
+        self.wall = pygame.image.load(path_to_image('wall.png')).convert()
 
     def generate_lab(self):
         """

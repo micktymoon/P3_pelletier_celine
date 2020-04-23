@@ -2,24 +2,25 @@
 # -*-coding: utf8 -*-
 
 import pygame
-import os
+from macgiver_game.fonction_chemin import path_to_image
 
 
 class Player(pygame.sprite.Sprite):
     """Class for the labyrinth player."""
 
     def __init__(self, x, y, screen):
-        """Constructor of this class.
+        """
+        Constructor of this class.
 
         Parameters:
         :param x : the character's position x on the labyrinth's
                     configuration.
-        :type x : int.
+        :type x : int
         :param y : the character's position y on the labyrinth's
                     configuration.
-        :type y : int.
+        :type y : int
         :param screen : the game screen.
-        :type screen : pygame surface.
+        :type screen : pygame.surface.Surface
 
         The constructor allows you to create a Player object with an image,
         a position and 3 objects.
@@ -27,7 +28,7 @@ class Player(pygame.sprite.Sprite):
 
         super(Player, self).__init__()
         self.screen = screen
-        self.image = pygame.image.load(os.path.join('image', 'MacGyver.png'))\
+        self.image = pygame.image.load(path_to_image('MacGyver.png'))\
             .convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()

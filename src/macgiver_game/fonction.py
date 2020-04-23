@@ -4,10 +4,11 @@
 import sys
 import pygame
 import time
-from classes.class_labyrinth import Lab
-from classes.class_player import Player
-from classes.class_guardian import Guardian
-from classes.class_object import Labobject
+from .classes.class_labyrinth import Lab
+from .classes.class_player import Player
+from .classes.class_guardian import Guardian
+from .classes.class_object import Labobject
+from macgiver_game.fonction_chemin import path_to_labyrinth, path_to_image
 
 
 def create_character(labconfig, lettre, class_char, screen1):
@@ -17,13 +18,13 @@ def create_character(labconfig, lettre, class_char, screen1):
     Parameters:
 
      :param labconfig : the labyrinth configuration.
-     :type labconfig : list.
+     :type labconfig : list
      :param lettre : the lettre of the character we want to create.
-     :type lettre : str.
+     :type lettre : str
      :param class_char : the character's classe.
-     :type class_char : class.
+     :type class_char : type
      :param screen1 : the game screen.
-     :type screen1 : pygame surface.
+     :type screen1 : pygame.surface.Surface
 
     This function create a character in the labyrinth configuration,
     using his letter in the configuration and his class.
@@ -31,8 +32,9 @@ def create_character(labconfig, lettre, class_char, screen1):
      Returns:
 
      :return: the character in the game screen.
-     :rtype: class object.
+     :rtype: pygame.sprite.Sprite
     """
+
     i = 0
     for row in labconfig:
         y = 0
@@ -51,9 +53,9 @@ def erase_pos_character(labconfig, lettre):
     Parameters:
 
     :param labconfig : the labyrinth configuration.
-    :type labconfig : list.
+    :type labconfig : list
     :param lettre : the lettre of the character we want to create.
-    :type lettre : str.
+    :type lettre : str
 
     This function replace the character's letter in the labyrinth
     configuration with a 'x', this indicates an empty position.
@@ -61,8 +63,9 @@ def erase_pos_character(labconfig, lettre):
     Returns:
 
     :return: the labyrinth configuration.
-    :rtype: list.
+    :rtype: list
     """
+
     i = 0
     for row in labconfig:
         y = 0
@@ -75,18 +78,20 @@ def erase_pos_character(labconfig, lettre):
 
 
 def erase_pos_object(list_none, object_lab):
-    """Erase the object position from the list of the empty position
+    """
+    Erase the object position from the list of the empty position
 
     Parameters:
 
     :param list_none : empty labyrinth position list.
-    :type list_none : list.
+    :type list_none : list
     :param object_lab : labyrinth object.
-    :type : Lab_object object.
+    :type : pygame.sprite.Sprite
 
     This function delete the position of the object in the list given as a
     parameter, to prevent multiple objects from being in the same position.
     """
+
     for x in list_none:
         if x == object_lab:
             del list_none[x]
@@ -98,16 +103,16 @@ def main():
     # Screen creation:
     screengame = pygame.display.set_mode((300, 300))
     # Generate and diplay the labyrinth:
-    labyrinth = Lab('labyrinth', screengame)
+    labyrinth = Lab(path_to_labyrinth(), screengame)
     labyrinth.generate_lab()
     # Draw the characters and the objects on the labyrinth:
     player = create_character(labyrinth.config, "P", Player, screengame)
     guardian = create_character(labyrinth.config, "G", Guardian, screengame)
-    ether = Labobject('ether.png', labyrinth.l_none, screengame)
+    ether = Labobject(path_to_image('ether.png'), labyrinth.l_none, screengame)
     erase_pos_object(labyrinth.l_none, ether)
-    needle = Labobject('aiguille.png', labyrinth.l_none, screengame)
+    needle = Labobject(path_to_image('aiguille.png'), labyrinth.l_none, screengame)
     erase_pos_object(labyrinth.l_none, needle)
-    pipe = Labobject('tube.png', labyrinth.l_none, screengame)
+    pipe = Labobject(path_to_image('tube.png'), labyrinth.l_none, screengame)
     erase_pos_character(labyrinth.config, "P")
 
     while 1:
@@ -146,7 +151,7 @@ def main():
                 player.pos.y = old_posy
 
             if player.pos.colliderect(guardian.my_rect()):
-                if player.obj1 and player.obj2 and player.obj3 is True:
+                if player.obj1 and player.obj2 and player.obj3:
                     player.pos.y = guardian.pos.y + 20
                     print("YOU WIN")
                     sys.exit()
@@ -157,11 +162,11 @@ def main():
 
         time.sleep(1/60)
         labyrinth.display_lab()
-        if player.obj1 is False:
+        if not player.obj1:
             ether.draw_me()
-        if player.obj2 is False:
+        if not player.obj2:
             needle.draw_me()
-        if player.obj3 is False:
+        if not player.obj3:
             pipe.draw_me()
         guardian.draw_me()
         player.draw_me()

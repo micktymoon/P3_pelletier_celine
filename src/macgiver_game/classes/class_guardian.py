@@ -2,14 +2,15 @@
 # -*-coding: utf8 -*-
 
 import pygame
-import os
+from macgiver_game.fonction_chemin import path_to_image
 
 
 class Guardian(pygame.sprite.Sprite):
     """Class for the labyrinth guardian."""
 
     def __init__(self, x, y, screen):
-        """Constructor of this class.
+        """
+        Constructor of this class.
 
         Parameters:
         :param x : the character's position x on the labyrinth's configuration.
@@ -17,14 +18,15 @@ class Guardian(pygame.sprite.Sprite):
         :param y : the character's position y on the labyrinth's configuration.
         :type y : int.
         :param screen : the game screen.
-        :type screen : pygame surface.
+        :type screen : pygame.surface.Surface
 
         The constructor allows you to create a Guardian object with an image
         and a position.
         """
+
         super(Guardian, self).__init__()
         self.screen = screen
-        self.image = pygame.image.load(os.path.join('image', 'Gardien.png'))\
+        self.image = pygame.image.load(path_to_image('Gardien.png'))\
             .convert_alpha()
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()
@@ -38,6 +40,12 @@ class Guardian(pygame.sprite.Sprite):
         self.screen.blit(self.image, self.pos)
 
     def my_rect(self):
-        """Return the rectangle of the guardian."""
+        """
+        Return the rectangle of the guardian.
+
+        Return :
+
+        :rtype : tuple
+        """
 
         return self.x, self.y, 20, 20
